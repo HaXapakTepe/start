@@ -14,13 +14,17 @@ ul {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   display: block;
 }
 
 input,
 button {
   font: inherit;
+}
+
+fieldset {
+  padding: 0;
 }
 
 a {
@@ -52,8 +56,6 @@ body {
   display: flex;
   flex-direction: column;
 
-  // контейнер + padding с двух сторон
-  @include fluid(width, 962px, 1336px);
 }
 
 .main {
@@ -61,6 +63,8 @@ body {
 }
 
 .container {
+  // контейнер + padding с двух сторон
+  @include fluid(width, 962px, 1336px);
   @include container;
 }
 
