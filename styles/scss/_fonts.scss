@@ -1,8 +1,17 @@
 @font-face {
-  font-family: "Montserrat";
-  font-weight: 500;
+  font-family: "Heliosc";
+  font-weight: 400;
   font-style: normal;
-  src: url("../fonts/Montserrat-Medium.woff") format("woff"),
-    url("../fonts/Montserrat-Medium.woff2") format("woff2");
+  src: url("../../assets/fonts/Heliosc-Regular.woff") format("woff"),
+    url("../../assets/fonts/Heliosc-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Heliosc";
+  font-weight: 700;
+  font-style: normal;
+  src: url("../../assets/fonts/Heliosc-Bold.woff") format("woff"),
+    url("../../assets/fonts/Heliosc-Bold.woff2") format("woff2");
   font-display: swap;
 }
