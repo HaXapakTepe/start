@@ -31,8 +31,13 @@
     z-index: -1;
     flex-shrink: unset;
     transition: transform .38s ease-in-out, opacity .38s ease-in-out, visibility .38s ease-in-out, z-index .38s ease-in-out;
+    overflow-y: auto;
 
-    &.active {
+    &__list {
+      flex-direction: column;
+    }
+
+    &--active {
       opacity: 1;
       visibility: visible;
       z-index: 3;
