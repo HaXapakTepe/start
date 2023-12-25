@@ -69,7 +69,8 @@ body {
   @include container;
 }
 
-[class$="__icon"] {
+[class$="__icon"],
+[class$="-icon"] {
   display: flex;
   align-items: center;
 }
