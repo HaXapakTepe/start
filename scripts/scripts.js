@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', () => {
   const body = document.querySelector('body')
   const burger = document.querySelector('.burger')
   const menu = document.querySelector('.menu')
@@ -39,4 +39,4 @@ if (document.querySelector('[name="phone"]')) {
   }
   const mask = IMask(element, maskOptions)
 }
-// document.addEventListener('DOMContentLoaded', () => {})
+// $(document).ready(function () {})
