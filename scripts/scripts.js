@@ -30,6 +30,64 @@ document.addEventListener('DOMContentLoaded', () => {
   //     })
   //   })
   // }
+
+  function handleTabClick(tabs, pages, activeTabClass, activePageClass, opacityPageClass) {
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((tab) => tab.classList.remove(activeTabClass))
+        pages.forEach((page) => {
+          page.classList.remove(activePageClass)
+          page.classList.remove(opacityPageClass)
+        })
+
+        tab.classList.add(activeTabClass)
+        pages[idx].classList.add(activePageClass)
+
+        setTimeout(() => {
+          pages[idx].classList.add(opacityPageClass)
+        }, 380)
+      })
+    })
+  }
+
+  const tabs = document.querySelectorAll('.tab__target')
+  const pages = document.querySelectorAll('.tab__info')
+
+  handleTabClick(tabs, pages, 'tab__target--active', 'tab__info--active', 'tab__info--opacity')
+
+  // const accordion = document.querySelectorAll('.accordion')
+  // accordion?.forEach((acc) => {
+  //   acc.addEventListener('click', (e) => {
+  //     e.preventDefault()
+  //     // const content = acc.querySelector('.accordion__content')
+  //     const content = acc.nextElementSibling
+  //     if (acc.classList.contains('accordion--active')) {
+  //       acc.classList.remove('accordion--active')
+  //       content.style.maxHeight = '0'
+  //     } else {
+  //       acc.classList.add('accordion--active')
+  //       content.style.maxHeight = content.scrollHeight + 'px'
+  //     }
+  //   })
+  // })
+  const accordions = document.querySelectorAll('.accordion')
+  const contents = document.querySelectorAll('.accordion-content')
+
+  accordions?.forEach((acc, index) => {
+    acc.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      const content = contents[index]
+
+      if (acc.classList.contains('accordion--active')) {
+        acc.classList.remove('accordion--active')
+        content.style.maxHeight = '0'
+      } else {
+        acc.classList.add('accordion--active')
+        content.style.maxHeight = content.scrollHeight + 'px'
+      }
+    })
+  })
 })
 
 if (document.querySelector('[name="phone"]')) {

@@ -269,4 +269,15 @@ body.no-scroll {
   .burger--active .burger__line::after {
     transform: rotate(-45deg);
   }
+}
+.tab__info {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.23s ease-in-out;
+}
+.tab__info--active {
+  display: block;
+}
+.tab__info--opacity {
+  opacity: 1;
 }/*# sourceMappingURL=style.css.map */
