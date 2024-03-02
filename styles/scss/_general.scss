@@ -19,6 +19,23 @@ img {
   display: block;
 }
 
+// ol {
+//   counter-reset: num;
+//   list-style: decimal-leading-zero;
+
+//   li {
+//     &:before {
+//       content: counter(num, decimal-leading-zero);
+//       counter-increment: num;
+//       color: #FF7707;
+//       font-size: 40px;
+//       font-weight: 500;
+//       line-height: 120%;
+//       letter-spacing: -0.2px;
+//     }
+//   }
+// }
+
 input,
 button {
   font: inherit;
