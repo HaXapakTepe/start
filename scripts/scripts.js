@@ -88,13 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   })
-})
 
-if (document.querySelector('[name="phone"]')) {
-  const element = document.querySelector('[name="phone"]')
-  const maskOptions = {
-    mask: '+{7} 000 000 00 00',
+  if (document.querySelector('[name="phone"]')) {
+    const element = document.querySelector('[name="phone"]')
+    const maskOptions = {
+      mask: '+{7} 000 000 00 00',
+    }
+    const mask = IMask(element, maskOptions)
   }
-  const mask = IMask(element, maskOptions)
-}
+})
 // $(document).ready(function () {})

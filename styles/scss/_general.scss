@@ -101,6 +101,12 @@ body {
 [class$="-icon"] {
   display: flex;
   align-items: center;
+
+  svg {
+    path {
+      transition: fill .23s ease-in-out, stroke .23s ease-in-out;
+    }
+  }
 }
 
 .logo {
