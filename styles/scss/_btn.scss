@@ -1,0 +1,18 @@
+.btn {
+  font-size: 14px;
+  background-color: #D9291D;
+  color: #fff;
+  border-radius: 5px;
+  @include fluid(padding-left, 15px, 24px);
+  @include fluid(padding-right, 15px, 24px);
+  @include fluid(padding-top, 10px, 15px);
+  @include fluid(padding-bottom, 10px, 15px);
+  border: 1px solid #D9291D;
+  transition: background-color 0.23s ease-in-out,
+    color 0.23s ease-in-out;
+
+  &:hover {
+    color: #D9291D;
+    background-color: #fff;
+  }
+}
