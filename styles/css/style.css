@@ -131,6 +131,10 @@ body.no-scroll {
   display: flex;
   align-items: center;
 }
+[class$=__icon] svg path,
+[class$=-icon] svg path {
+  transition: fill 0.23s ease-in-out, stroke 0.23s ease-in-out;
+}
 
 .logo__img {
   -o-object-fit: contain;

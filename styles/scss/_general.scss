@@ -47,6 +47,14 @@ img {
 //   }
 // }
 
+// кол-во строк в блоке
+// * {
+//   display: -webkit-box;
+//   -webkit-line-clamp: 4;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+// }
+
 input,
 button {
   font: inherit;
