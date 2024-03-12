@@ -89,6 +89,27 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
+  const count = document.querySelectorAll('.count')
+
+  count?.forEach((element) => {
+    element.addEventListener('click', function (event) {
+      const e = event.target
+      const num = element.querySelector('.count__num')
+      let sum = +num.innerHTML
+
+      if (e.classList.contains('count__plus')) {
+        ++sum
+        num.innerHTML = sum
+      }
+      if (e.classList.contains('count__minus')) {
+        if (sum > 1) {
+          --sum
+          num.innerHTML = sum
+        }
+      }
+    })
+  })
+
   if (document.querySelector('[name="phone"]')) {
     const element = document.querySelector('[name="phone"]')
     const maskOptions = {
