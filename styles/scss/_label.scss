@@ -22,6 +22,10 @@
   font-size: 14px;
   cursor: pointer;
 
+  &.hidden {
+    display: none;
+  }
+
   &:hover {
     .label__inputCustom {
       border-color: #D9291D;
@@ -31,8 +35,13 @@
   &__input {
     &:checked+.label__inputCustom {
       background-color: #D9291D;
+      border-color: #D9291D;
 
-      &::after {
+      // &::after {
+      //   transform: translate(-50%, -50%) scale(1);
+      // }
+
+      .label__inputCustom-icon {
         transform: translate(-50%, -50%) scale(1);
       }
     }
@@ -49,17 +58,30 @@
     transition: background-color 0.23s ease-in-out,
       border-color 0.23s ease-in-out;
 
-    &::after {
-      content: "";
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%) scale(0);
+    //   width: 8px;
+    //   height: 6px;
+    //   background-image: url("../../assets/images/icons/checkWhite.svg");
+    //   background-repeat: no-repeat;
+    //   background-size: contain;
+    //   transition: transform 0.23s ease-in-out;
+    // }
+
+    &-icon {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
       width: 8px;
       height: 6px;
-      background-image: url("../../assets/images/icons/checkWhite.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
+      // background-image: url("../../assets/images/icons/checkWhite.svg");
+      // background-repeat: no-repeat;
+      // background-size: contain;
       transition: transform 0.23s ease-in-out;
     }
   }
