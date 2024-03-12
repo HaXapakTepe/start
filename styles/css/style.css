@@ -421,4 +421,59 @@ body.no-scroll {
 }
 .count__plus:hover, .count__minus:hover {
   color: #4B4444;
+}
+
+.check {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+}
+
+.label {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  gap: 10px;
+  font-weight: 400;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.label:hover .label__inputCustom {
+  border-color: #D9291D;
+}
+.label__input:checked + .label__inputCustom {
+  background-color: #D9291D;
+}
+.label__input:checked + .label__inputCustom::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+.label__inputCustom {
+  position: relative;
+  min-width: 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  transition: background-color 0.23s ease-in-out, border-color 0.23s ease-in-out;
+}
+.label__inputCustom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 8px;
+  height: 6px;
+  background-image: url("../../assets/images/icons/checkWhite.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform 0.23s ease-in-out;
 }/*# sourceMappingURL=style.css.map */
