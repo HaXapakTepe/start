@@ -119,3 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })
 // $(document).ready(function () {})
+// $('.catalog__sorting').select2({
+//   dropdownParent: $('.catalog__sort-select'),
+//   // placeholder: 'Выберите из списка',
+// })
