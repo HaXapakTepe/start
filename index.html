@@ -1,115 +1,126 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta name="viewport"
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <meta name="viewport"
     content="width=device-width,initial-scale=1.0,viewport-fit=cover,maximum-scale=1,user-scalable=0"> -->
-  <link rel="shortcut icon" href="./assets/images/favicon.svg" type="x-icon">
-  <link rel="stylesheet" href="./styles/css/icons.css">
-  <link rel="stylesheet" href="./styles/css/normalize.css">
-  <link rel="stylesheet" href="./styles/css/style.css?v=0.0001">
-  <title>Document</title>
-</head>
+		<link
+			rel="shortcut icon"
+			href="./assets/images/favicon.svg"
+			type="x-icon"
+		/>
+		<link rel="stylesheet" href="./styles/css/icons.css" />
+		<link rel="stylesheet" href="./styles/css/normalize.css" />
+		<link rel="stylesheet" href="./styles/css/style.css?v=0.0001" />
+		<title>Document</title>
+	</head>
 
-<body>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="container">
+					<form class="search search--center" action="">
+						<label class="search__label">
+							<input
+								class="search__input"
+								type="search"
+								placeholder="Поиск по сайту"
+							/>
+							<button class="search__icon">
+								<svg
+									width="20"
+									height="20"
+									viewBox="0 0 20 20"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M9.66146 1C4.98843 1 1.2002 4.78824 1.2002 9.46126C1.2002 14.1343 4.98843 17.9225 9.66146 17.9225C11.6517 17.9225 13.4815 17.2354 14.9265 16.0853L17.6508 18.8027C17.915 19.0662 18.3428 19.0657 18.6062 18.8015C18.8697 18.5373 18.8692 18.1096 18.605 17.8461L15.9141 15.162C17.2861 13.6581 18.1227 11.6574 18.1227 9.46126C18.1227 4.78824 14.3345 1 9.66146 1ZM2.55136 9.46126C2.55136 5.53447 5.73466 2.35117 9.66146 2.35117C13.5883 2.35117 16.7715 5.53447 16.7715 9.46126C16.7715 13.3881 13.5883 16.5714 9.66146 16.5714C5.73466 16.5714 2.55136 13.3881 2.55136 9.46126Z"
+										fill="#9FA3A8"
+									/>
+								</svg>
+							</button>
+						</label>
+					</form>
+					<div class="header__inner">
+						<a class="logo" href="#">
+							<img class="logo__img" src="./assets/images/logo.svg" alt="" />
+						</a>
+						<nav class="menu">
+							<ul class="menu__list">
+								<li class="menu__item">
+									<a class="menu__link" href="#"> Заготовки </a>
+								</li>
+								<li class="menu__item">
+									<a class="menu__link" href="#"> Искусственный интеллект </a>
+								</li>
+								<li class="menu__item">
+									<a class="menu__link" href="#"> Каталог </a>
+								</li>
+								<li class="menu__item">
+									<a class="menu__link" href="#"> Фото и Видео </a>
+								</li>
+								<li class="menu__item">
+									<a class="menu__link" href="#"> О нас </a>
+								</li>
+								<li class="menu__item">
+									<a class="menu__link" href="#"> Контакты </a>
+								</li>
+							</ul>
+						</nav>
+						<div class="burger">
+							<div class="burger__line"></div>
+						</div>
+					</div>
+				</div>
+			</header>
 
-  <div class="wrapper">
+			<main class="main">
+				<label class="label">
+					<input class="label__input check" type="checkbox" />
+					<span class="label__inputCustom"></span>
+					Текст
+				</label>
 
-    <header class="header">
-      <div class="container">
-        <div class="header__inner">
-          <a class="logo" href="#">
-            <img class="logo__img" src="./assets/images/logo.svg" alt="">
-          </a>
-          <nav class="menu">
-            <ul class="menu__list">
-              <li class="menu__item">
-                <a class="menu__link" href="#">
-                  Заготовки
-                </a>
-              </li>
-              <li class="menu__item">
-                <a class="menu__link" href="#">
-                  Искусственный интеллект
-                </a>
-              </li>
-              <li class="menu__item">
-                <a class="menu__link" href="#">
-                  Каталог
-                </a>
-              </li>
-              <li class="menu__item">
-                <a class="menu__link" href="#">
-                  Фото и Видео
-                </a>
-              </li>
-              <li class="menu__item">
-                <a class="menu__link" href="#">
-                  О нас
-                </a>
-              </li>
-              <li class="menu__item">
-                <a class="menu__link" href="#">
-                  Контакты
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="burger">
-            <div class="burger__line"></div>
-          </div>
-        </div>
-      </div>
-    </header>
+				<label class="label">
+					<input class="label__input check" type="checkbox" />
+					<span class="label__inputCustom">
+						<i class="label__inputCustom-icon">
+							<svg
+								width="8"
+								height="6"
+								viewBox="0 0 8 6"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M8 1.38966L6.80725 0.199997L3.57825 3.42036L1.19275 1.04123L0 2.2309L3.57825 5.8L8 1.38966Z"
+									fill="#ffffff"
+								/>
+							</svg>
+						</i>
+					</span>
+					Текст
+				</label>
 
-    <main class="main">
-
-
-      <label class="label">
-        <input class="label__input check" type="checkbox">
-        <span class="label__inputCustom"></span>
-        Текст
-      </label>
-
-      <label class="label">
-        <input class="label__input check" type="checkbox">
-        <span class="label__inputCustom">
-          <i class="label__inputCustom-icon">
-            <svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 1.38966L6.80725 0.199997L3.57825 3.42036L1.19275 1.04123L0 2.2309L3.57825 5.8L8 1.38966Z"
-                fill="#ffffff" />
-            </svg>
-          </i>
-        </span>
-        Текст
-      </label>
-
-      <!-- <div class="catalog__sort-select">
+				<!-- <div class="catalog__sort-select">
         <select class="catalog__sorting" name="sorting">
           <option data-attr="cheap" value="Сначала недорогие">Сначала недорогие</option>
           <option data-attr="expensive" value="Сначала дорогие">Сначала дорогие</option>
         </select>
       </div> -->
+			</main>
 
+			<footer class="footer"></footer>
+		</div>
 
-    </main>
-
-    <footer class="footer">
-
-    </footer>
-
-  </div>
-
-
-
-
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
-  <script src="https://unpkg.com/imask"></script>
-  <script src="./scripts/valid.js"></script>
-  <script src="./scripts/scripts.js"></script>
-</body>
-
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
+		<script src="https://unpkg.com/imask"></script>
+		<script src="./scripts/valid.js"></script>
+		<script src="./scripts/scripts.js"></script>
+	</body>
 </html>
