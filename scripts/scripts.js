@@ -82,23 +82,51 @@ document.addEventListener('DOMContentLoaded', () => {
 	//     }
 	//   })
 	// })
-	const accordions = document.querySelectorAll('.accordion')
-	const contents = document.querySelectorAll('.accordion-content')
+	// const accordions = document.querySelectorAll('.accordion')
+	// const contents = document.querySelectorAll('.accordion-content')
 
-	accordions?.forEach((acc, index) => {
-		acc.addEventListener('click', e => {
-			e.preventDefault()
+	// accordions?.forEach((acc, index) => {
+	// 	acc.addEventListener('click', e => {
+	// 		e.preventDefault()
 
-			const content = contents[index]
+	// 		const content = contents[index]
 
-			if (acc.classList.contains('accordion--active')) {
+	// 		if (acc.classList.contains('accordion--active')) {
+	// 			acc.classList.remove('accordion--active')
+	// 			content.style.maxHeight = '0'
+	// 		} else {
+	// 			acc.classList.add('accordion--active')
+	// 			content.style.maxHeight = content.scrollHeight + 'px'
+	// 		}
+	// 	})
+	// })
+
+	document.addEventListener('click', e => {
+		const accordionElement = e.target.closest('.accordion')
+		const isAccordionContent = e.target.matches('.accordion-content')
+
+		if (!accordionElement && !isAccordionContent) {
+			accordion?.forEach(acc => {
 				acc.classList.remove('accordion--active')
-				content.style.maxHeight = '0'
-			} else {
-				acc.classList.add('accordion--active')
-				content.style.maxHeight = content.scrollHeight + 'px'
-			}
-		})
+				acc.nextElementSibling.style.maxHeight = '0'
+			})
+		} else {
+			accordion?.forEach(acc => {
+				const content = acc.nextElementSibling
+				if (acc === accordionElement || content === e.target) {
+					if (acc.classList.contains('accordion--active')) {
+						acc.classList.remove('accordion--active')
+						content.style.maxHeight = '0'
+					} else {
+						acc.classList.add('accordion--active')
+						content.style.maxHeight = content.scrollHeight + 'px'
+					}
+				} else {
+					acc.classList.remove('accordion--active')
+					content.style.maxHeight = '0'
+				}
+			})
+		}
 	})
 
 	const count = document.querySelectorAll('.count')
