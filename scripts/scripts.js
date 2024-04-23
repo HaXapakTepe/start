@@ -101,32 +101,37 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 	})
 	// })
 
-	document.addEventListener('click', e => {
-		const accordionElement = e.target.closest('.accordion')
-		const isAccordionContent = e.target.matches('.accordion-content')
+	const accordion = document.querySelectorAll('.accordion')
 
-		if (!accordionElement && !isAccordionContent) {
-			accordion?.forEach(acc => {
+	document.addEventListener('click', e => {
+		const isAccordionClicked = e.target.closest('.accordion')
+		if (!isAccordionClicked) {
+			accordion.forEach(acc => {
+				const content = acc.querySelector('.accordion__content')
 				acc.classList.remove('accordion--active')
-				acc.nextElementSibling.style.maxHeight = '0'
-			})
-		} else {
-			accordion?.forEach(acc => {
-				const content = acc.nextElementSibling
-				if (acc === accordionElement || content === e.target) {
-					if (acc.classList.contains('accordion--active')) {
-						acc.classList.remove('accordion--active')
-						content.style.maxHeight = '0'
-					} else {
-						acc.classList.add('accordion--active')
-						content.style.maxHeight = content.scrollHeight + 'px'
-					}
-				} else {
-					acc.classList.remove('accordion--active')
-					content.style.maxHeight = '0'
-				}
+				content.style.maxHeight = '0'
 			})
 		}
+	})
+
+	accordion.forEach(acc => {
+		acc.addEventListener('click', function (e) {
+			const content = this.querySelector('.accordion__content')
+			if (!this.classList.contains('accordion--active')) {
+				accordion.forEach(otherAcc => {
+					if (otherAcc !== this) {
+						const otherContent = otherAcc.querySelector('.accordion__content')
+						otherAcc.classList.remove('accordion--active')
+						otherContent.style.maxHeight = '0'
+					}
+				})
+				this.classList.add('accordion--active')
+				content.style.maxHeight = content.scrollHeight + 'px'
+			} else {
+				this.classList.remove('accordion--active')
+				content.style.maxHeight = '0'
+			}
+		})
 	})
 
 	const count = document.querySelectorAll('.count')
