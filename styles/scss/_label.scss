@@ -13,7 +13,8 @@
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
   font-weight: 400;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -22,67 +23,90 @@
   font-size: 14px;
   cursor: pointer;
 
-  &.hidden {
-    display: none;
-  }
-
-  &:hover {
-    .label__inputCustom {
-      border-color: #D9291D;
-    }
-  }
-
   &__input {
     &:checked+.label__inputCustom {
-      background-color: #D9291D;
-      border-color: #D9291D;
+      .label__inputCustom-icon {
+        transform: scale(1);
+      }
 
       // &::after {
       //   transform: translate(-50%, -50%) scale(1);
       // }
-
-      .label__inputCustom-icon {
-        transform: translate(-50%, -50%) scale(1);
-      }
     }
   }
 
   &__inputCustom {
-    position: relative;
-    min-width: 18px;
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-    background-color: #fff;
-    border: 1px solid #e3e3e3;
-    transition: background-color 0.23s ease-in-out,
-      border-color 0.23s ease-in-out;
-
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   top: 50%;
-    //   left: 50%;
-    //   transform: translate(-50%, -50%) scale(0);
-    //   width: 8px;
-    //   height: 6px;
-    //   background-image: url("../../assets/images/icons/checkWhite.svg");
-    //   background-repeat: no-repeat;
-    //   background-size: contain;
-    //   transition: transform 0.23s ease-in-out;
-    // }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      width: 8px;
-      height: 6px;
-      // background-image: url("../../assets/images/icons/checkWhite.svg");
-      // background-repeat: no-repeat;
-      // background-size: contain;
+      width: 10px;
+      height: 7px;
+      transform: scale(0);
       transition: transform 0.23s ease-in-out;
+    }
+  }
+
+  &--alt {
+    .label {
+      &__input {
+        &:checked+.label__inputCustom {
+          background-color: #0a514c;
+
+          .label__inputCustom-icon {
+            transform: translate(-50%, -50%) scale(1);
+
+            svg {
+              path {
+                stroke: #fff;
+              }
+            }
+          }
+        }
+      }
+
+      &__inputCustom {
+        position: relative;
+        min-width: 16px;
+        width: 16px;
+        height: 16px;
+        border-radius: 5px;
+        background-color: #fff;
+        border: 1px solid #e3e3e3;
+        transition: background-color 0.23s ease-in-out,
+          border-color 0.23s ease-in-out;
+
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   top: 50%;
+        //   left: 50%;
+        //   transform: translate(-50%, -50%) scale(0);
+        //   width: 8px;
+        //   height: 6px;
+        //   background-image: url("../../assets/images/icons/checkWhite.svg");
+        //   background-repeat: no-repeat;
+        //   background-size: contain;
+        //   transition: transform 0.23s ease-in-out;
+        // }
+
+        &-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          width: 7px;
+          height: 5px;
+          transition: transform 0.23s ease-in-out;
+
+          svg {
+            path {
+              transition: stroke 0.23s ease-in-out;
+            }
+          }
+        }
+      }
     }
   }
 }
