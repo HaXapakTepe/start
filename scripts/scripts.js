@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const burger = document.querySelector('.burger')
 	const menu = document.querySelector('.menu')
 	const menuItem = document.querySelectorAll('.menu__item')
+	const close = document.querySelector('.menu__close')
 
 	const toggleMenu = () => {
 		menu.classList.toggle('menu--active')
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	close.addEventListener('click', toggleMenu)
 	burger.addEventListener('click', toggleMenu)
 	document.addEventListener('click', clickOutsideMenu)
 
