@@ -13,11 +13,17 @@
     @include fluid(width, 35px, 48px);
     @include fluid(height, 35px, 48px);
     background-repeat: no-repeat;
-    transition: opacity 0.23s ease-in-out;
+    transition: background-color 0.23s ease-in-out;
     border: 1px solid #FAB700;
     border-radius: 50%;
     right: unset;
     left: unset;
+    margin-top: unset;
+    top: unset;
+
+    &:hover {
+      background-color: #FAB700;
+    }
 
     &::after {
       content: none;
@@ -47,8 +53,6 @@
   }
 
   &__next {
-    background-color: #FAB700;
-
     &::before {
       background-image: url('../../assets/images/icons/swiper-right.svg');
     }
