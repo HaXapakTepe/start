@@ -10,15 +10,18 @@
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-// *::-webkit-scrollbar {
-//   width: 3px;
-//   height: 0;
-//   background-color: transparent;
+// *::-webkit-scrollbar-track {
+// 	background-color: transparent;
+// 	/* Цвет фона трека */
+// 	margin: 10px;
+// 	/* Отступ от края */
 // }
 
 // *::-webkit-scrollbar-thumb {
-//   background-color: #00000033;
-//   border-radius: 25px;
+// 	background-color: #888;
+// 	/* Цвет ползунка */
+// 	border-radius: 6px;
+// 	/* Радиус скругления ползунка */
 // }
 
 ul {
@@ -135,8 +138,7 @@ body {
 	}
 }
 
-@media (max-width: 1366px) {
-}
+@media (max-width: 1366px) {}
 
 @media (max-width: 992px) {
 	.container {
@@ -144,8 +146,6 @@ body {
 	}
 }
 
-@media (max-width: 768px) {
-}
+@media (max-width: 768px) {}
 
-@media (max-width: 576px) {
-}
+@media (max-width: 576px) {}
