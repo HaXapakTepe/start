@@ -198,6 +198,34 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		const mask = IMask(element, maskOptions)
 	}
+
+	if (document.querySelector('.certificate__swiper')) {
+		var certificateSwiper = new Swiper('.certificate__swiper', {
+			slidesPerView: 4,
+			spaceBetween: 20,
+			breakpoints: {
+				993: {
+					slidesPerView: 4,
+				},
+				769: {
+					slidesPerView: 3,
+				},
+				577: {
+					slidesPerView: 2,
+				},
+				361: {
+					slidesPerView: 1.8,
+				},
+				320: {
+					slidesPerView: 1.2,
+				},
+			},
+			navigation: {
+				nextEl: `.certificate__arrow-next`,
+				prevEl: `.certificate__arrow-prev`,
+			},
+		})
+	}
 })
 // $(document).ready(function () {})
 // $('.catalog__sorting').select2({
