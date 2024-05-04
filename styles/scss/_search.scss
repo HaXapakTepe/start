@@ -1,65 +1,61 @@
 .search {
 	width: 100%;
-	max-width: 364px;
-
-	&--center {
-		margin-left: auto;
-		margin-right: auto;
-	}
+	max-width: 474px;
 
 	&__label {
 		display: flex;
 		align-items: center;
-		position: relative;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		@include fluid(padding-left, 14px, 19px);
-		@include fluid(padding-right, 14px, 19px);
-		border: 1px solid #f4f6f8;
-		border-radius: 5px;
-		background-color: #f4f6f8;
+		gap: 10px;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		@include fluid(padding-left, 14px, 22px);
+		@include fluid(padding-right, 14px, 22px);
+		border: 1px solid #F2F2F2;
+		border-radius: 30px;
+		background-color: #F2F2F2;
 		transition: border-color 0.23s ease-in-out;
 
 		&:hover,
 		&:focus-within {
-			border-color: #d9291d;
+			border-color: #FAB700;
+
+			.search__icon {
+				svg {
+					path {
+						fill: #FAB700;
+					}
+				}
+			}
 		}
 	}
 
 	&__input {
 		width: 90%;
 		font-size: 14px;
-
-		&::-webkit-search-cancel-button {
-			cursor: pointer;
-		}
+		background-color: transparent;
 
 		&::-webkit-input-placeholder {
-			color: #9fa3a8;
+			color: #6C6C6C;
 		}
 
 		&::-moz-placeholder {
-			color: #9fa3a8;
+			color: #6C6C6C;
 		}
 
 		&:-ms-input-placeholder {
-			color: #9fa3a8;
+			color: #6C6C6C;
 		}
 
 		&::-ms-input-placeholder {
-			color: #9fa3a8;
+			color: #6C6C6C;
 		}
 
 		&::placeholder {
-			color: #9fa3a8;
+			color: #6C6C6C;
 		}
 	}
 
 	&__icon {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		@include fluid(right, 15px, 20px);
 		cursor: pointer;
 
 		svg {
@@ -71,7 +67,7 @@
 		&:hover {
 			svg {
 				path {
-					fill: #d9291d;
+					fill: #FAB700;
 				}
 			}
 		}
