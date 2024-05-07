@@ -199,33 +199,69 @@ document.addEventListener('DOMContentLoaded', () => {
 		const mask = IMask(element, maskOptions)
 	}
 
-	if (document.querySelector('.certificate__swiper')) {
-		var certificateSwiper = new Swiper('.certificate__swiper', {
-			slidesPerView: 4,
-			spaceBetween: 20,
-			breakpoints: {
-				993: {
-					slidesPerView: 4,
-				},
-				769: {
-					slidesPerView: 3,
-				},
-				577: {
-					slidesPerView: 2,
-				},
-				361: {
-					slidesPerView: 1.8,
-				},
-				320: {
-					slidesPerView: 1.2,
-				},
-			},
-			navigation: {
-				nextEl: `.certificate__arrow-next`,
-				prevEl: `.certificate__arrow-prev`,
-			},
-		})
-	}
+	// if (document.querySelector('.certificate__swiper')) {
+	// 	var certificateSwiper = new Swiper('.certificate__swiper', {
+	// 		slidesPerView: 4,
+	// 		spaceBetween: 20,
+	// 		breakpoints: {
+	// 			993: {
+	// 				slidesPerView: 4,
+	// 			},
+	// 			769: {
+	// 				slidesPerView: 3,
+	// 			},
+	// 			577: {
+	// 				slidesPerView: 2,
+	// 			},
+	// 			361: {
+	// 				slidesPerView: 1.8,
+	// 			},
+	// 			320: {
+	// 				slidesPerView: 1.2,
+	// 			},
+	// 		},
+	// 		navigation: {
+	// 			nextEl: `.certificate__arrow-next`,
+	// 			prevEl: `.certificate__arrow-prev`,
+	// 		},
+	// 	})
+	// }
+
+	// const slidersSwipers = []
+	// const sliderSwiper = document.querySelectorAll('.slider__swiper')
+	// sliderSwiper?.forEach((swiper, index) => {
+	// 	slidersSwipers.push(setSlidersSwiper(index + 1))
+	// })
+	// function setSlidersSwiper(index) {
+	// 	return new Swiper(`.slider__swiper--${index}`, {
+	// 		navigation: {
+	// 			prevEl: `.slider__arrow-prev--${index}`,
+	// 			nextEl: `.slider__arrow-next--${index}`,
+	// 		},
+	// 		breakpoints: {
+	// 			992: {
+	// 				slidesPerView: 3,
+	// 				spaceBetween: 32,
+	// 			},
+	// 			768: {
+	// 				slidesPerView: 2.1,
+	// 				spaceBetween: 24,
+	// 			},
+	// 			576: {
+	// 				slidesPerView: 1.6,
+	// 				spaceBetween: 16,
+	// 			},
+	// 			414: {
+	// 				slidesPerView: 1.5,
+	// 				spaceBetween: 12,
+	// 			},
+	// 			320: {
+	// 				slidesPerView: 1.1,
+	// 				spaceBetween: 12,
+	// 			},
+	// 		},
+	// 	})
+	// }
 })
 // $(document).ready(function () {})
 // $('.catalog__sorting').select2({
