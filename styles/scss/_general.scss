@@ -81,6 +81,10 @@ a {
 	text-decoration: none;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 html,
 body {
 	position: relative;
