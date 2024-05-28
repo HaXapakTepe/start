@@ -86,24 +86,35 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	})
 
-	// document.addEventListener('click', function (e) {
-	// 	const isAccordionClicked = e.target.closest('.accordion')
-	// 	const isAccordionAltClicked = e.target.closest('.accordionAlt')
-	// 	if (!isAccordionClicked) {
-	// 		accordion.forEach(acc => {
+	// const accordion = document.querySelectorAll('.accordion')
+
+	// if (accordion) {
+	// 	accordion.forEach(acc => {
+	// 		acc.addEventListener('click', () => {
 	// 			const content = acc.querySelector('.accordion__content')
-	// 			acc.classList.remove('accordion--active')
-	// 			content.style.maxHeight = '0'
+
+	// 			if (acc.classList.contains('accordion--active')) {
+	// 				acc.classList.remove('accordion--active')
+	// 				content.style.maxHeight = '0'
+	// 			} else {
+	// 				acc.classList.add('accordion--active')
+	// 				content.style.maxHeight = `${content.scrollHeight}px`
+	// 			}
 	// 		})
-	// 	}
-	// 	if (!isAccordionAltClicked) {
-	// 		accordionAlt.forEach(acc => {
-	// 			const content = acc.querySelector('.accordionAlt__content')
-	// 			acc.classList.remove('accordionAlt--active')
-	// 			content.style.maxHeight = '0'
-	// 		})
-	// 	}
-	// })
+	// 	})
+
+	// 	document.addEventListener('click', e => {
+	// 		const isAccordionClicked = e.target.closest('.accordion')
+
+	// 		if (!isAccordionClicked) {
+	// 			accordion.forEach(acc => {
+	// 				const content = acc.querySelector('.accordion__content')
+	// 				acc.classList.remove('accordion--active')
+	// 				content.style.maxHeight = '0'
+	// 			})
+	// 		}
+	// 	})
+	// }
 
 	// accordion?.forEach(acc => {
 	// 	acc.addEventListener('click', function (e) {
