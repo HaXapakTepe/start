@@ -160,6 +160,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 	})
 	// })
 
+	// const accordions = document.querySelectorAll('.accordion')
+	// const contents = document.querySelectorAll('.accordion-content')
+
+	// accordions?.forEach((acc, index) => {
+	//   acc.addEventListener('click', (e) => {
+	//     e.preventDefault()
+
+	//     const content = contents[index]
+
+	//     if (acc.classList.contains('accordion--active')) {
+	//       acc.classList.remove('accordion--active')
+	//       content.style.maxHeight = '0'
+	//     } else {
+	//       acc.classList.add('accordion--active')
+	//       content.style.maxHeight = content.scrollHeight + 'px'
+	//     }
+	//   })
+	// })
+
 	const count = document.querySelectorAll('.count')
 
 	count?.forEach(element => {
