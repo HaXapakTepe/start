@@ -41,13 +41,15 @@ ul {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
   display: block;
 }
 
 input,
 button {
   font: inherit;
+  outline: none;
+  background-color: transparent;
 }
 
 fieldset {
@@ -153,22 +155,6 @@ body.no-scroll {
 [class$=__icon] svg path,
 [class$=-icon] svg path {
   transition: fill 0.23s ease-in-out, stroke 0.23s ease-in-out;
-}
-
-.logo__img {
-  -o-object-fit: contain;
-  object-fit: contain;
-  height: 40px;
-}
-@media (min-width: 992px) {
-  .logo__img {
-    height: calc(0.0075431034 * 100vw + 32.5172413793px);
-  }
-}
-@media (min-width: 1920px) {
-  .logo__img {
-    height: 47px;
-  }
 }
 
 @media (max-width: 992px) {

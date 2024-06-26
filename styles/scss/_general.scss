@@ -29,7 +29,7 @@ ul {
 }
 
 img {
-	width: 100%;
+	max-width: 100%;
 	display: block;
 }
 
@@ -71,6 +71,8 @@ img {
 input,
 button {
 	font: inherit;
+	outline: none;
+	background-color: transparent;
 }
 
 fieldset {
@@ -131,14 +133,6 @@ body {
 		path {
 			transition: fill 0.23s ease-in-out, stroke 0.23s ease-in-out;
 		}
-	}
-}
-
-.logo {
-	&__img {
-		-o-object-fit: contain;
-		object-fit: contain;
-		@include fluid(height, 40px, 47px);
 	}
 }
 
