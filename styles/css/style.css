@@ -269,49 +269,52 @@ body.no-scroll {
 
 @media (max-width: 992px) {
   .burger {
-    width: 18px;
-    height: 18px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
-    background: transparent;
+    background: #202323;
+    padding: 12px 8px;
     z-index: 5;
-    border-radius: 50%;
+    border-radius: 7px;
     cursor: pointer;
   }
   .burger__line {
+    position: relative;
     display: block;
-    width: 18px;
-    height: 2px;
+    width: 12px;
+    height: 1px;
     border-radius: 3px;
-    background: #344054;
+    background: #454A4A;
     transition: all 0.23s ease-in-out;
   }
   .burger__line::before, .burger__line::after {
     content: "";
-    width: 18px;
-    height: 2px;
     position: absolute;
-    left: 0;
-    background: #344054;
+    left: 50%;
+    width: 18px;
+    height: 1px;
+    background: #454A4A;
     border-radius: 3px;
     transition: all 0.23s ease-in-out;
   }
   .burger__line::before {
-    transform: translateY(-6px);
+    transform: translateX(-50%) translateY(-5px);
   }
   .burger__line::after {
-    transform: translateY(6px);
+    transform: translateX(-50%) translateY(5px);
   }
   .burger--active .burger__line {
     width: 0;
     background: transparent;
   }
   .burger--active .burger__line::before {
-    transform: rotate(45deg);
+    transform: translateX(-50%) rotate(45deg);
   }
   .burger--active .burger__line::after {
-    transform: rotate(-45deg);
+    transform: translateX(-50%) rotate(-45deg);
   }
 }
 .logo__img {
