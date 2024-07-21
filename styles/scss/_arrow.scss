@@ -3,6 +3,7 @@
   display: flex;
   @include fluid(gap, 12px, 16px);
   @include fluid(height, 35px, 48px);
+  pointer-events: none;
 
   &__next,
   &__prev {
@@ -20,6 +21,8 @@
     left: unset;
     margin-top: unset;
     top: unset;
+    pointer-events: auto;
+
 
     &:hover {
       background-color: #FAB700;
