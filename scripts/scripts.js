@@ -221,6 +221,38 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	// альтернатива
+	const headerOffset = document.querySelector('header').offsetHeight
+
+	// Функция для плавной прокрутки
+	function smoothScroll(event) {
+		event.preventDefault() // Отменяем стандартное поведение ссылки
+
+		const targetId = this.getAttribute('href').substring(1) // Получаем целевой id
+		const targetElement = document.getElementById(targetId) // Находим элемент по id
+
+		if (targetElement) {
+			const elementPosition =
+				targetElement.getBoundingClientRect().top +
+				window.pageYOffset -
+				headerOffset // Рассчитываем позицию для прокрутки
+			window.scrollTo({
+				top: elementPosition,
+				behavior: 'smooth', // Плавная прокрутка
+			})
+		}
+	}
+
+	// Обрабатываем события клика на родительском элементе
+	document.body.addEventListener('click', event => {
+		// Проверяем, является ли клик на ссылку, начинающуюся с #
+		const link = event.target.closest('a[href^="#"]')
+		if (link) {
+			smoothScroll.call(link, event) // Вызываем функцию smoothScroll с контекстом ссылки
+			console.log(link)
+		}
+	})
+
 	if (document.querySelector('[name="phone"]')) {
 		const element = document.querySelector('[name="phone"]')
 		const maskOptions = {
