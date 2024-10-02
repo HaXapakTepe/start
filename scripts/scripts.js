@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				contentCard.forEach((card, index) => {
 					if (index >= 5) {
 						card.style.display = 'none'
-					} else {
+					} else if (index <= 4) {
 						card.style.display = 'grid'
 					}
 				})
