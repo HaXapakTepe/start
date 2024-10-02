@@ -33,6 +33,43 @@ document.addEventListener('DOMContentLoaded', () => {
 	//   })
 	// }
 
+	// показать элементы
+	const affiliate = document.querySelector('.affiliate')
+	if (affiliate) {
+		const contentCard = affiliate.querySelectorAll(
+			'.affiliate__cards table > tbody > tr:not(tr table tr), ' +
+				'.affiliate__cards--alt table > tbody > tr:not(tr table tr)'
+		)
+
+		let isAllVisible = true
+
+		function toggleCards() {
+			if (isAllVisible) {
+				contentCard.forEach((card, index) => {
+					if (index >= 5) {
+						card.style.display = 'none'
+					} else {
+						card.style.display = 'grid'
+					}
+				})
+			} else {
+				contentCard.forEach((card, index) => {
+					card.style.display = 'grid'
+				})
+			}
+			isAllVisible = !isAllVisible
+		}
+
+		toggleCards()
+
+		affiliate.addEventListener('click', function (e) {
+			const showMoreButton = e.target.closest('.showMore')
+			if (showMoreButton) {
+				toggleCards()
+			}
+		})
+	}
+
 	function handleTabClick(
 		tabs,
 		pages,
@@ -257,6 +294,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		const element = document.querySelector('[name="phone"]')
 		const maskOptions = {
 			mask: '+{7} 000 000 00 00',
+		}
+		const mask = IMask(element, maskOptions)
+	}
+
+	// input num
+	if (document.querySelector('[name="sum"]')) {
+		const element = document.querySelector('[name="sum"]')
+		const maskOptions = {
+			mask: Number,
+			scale: 0, // digits after point, 0 for integers
+			signed: false, // disallow negative
+			thousandsSeparator: ' ', // any single char
+			padFractionalZeros: false,
+			normalizeZeros: true,
+			radix: ',', // fractional delimiter
+			mapToRadix: [','],
 		}
 		const mask = IMask(element, maskOptions)
 	}
