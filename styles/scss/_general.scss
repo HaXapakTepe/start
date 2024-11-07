@@ -11,17 +11,20 @@
 }
 
 // &::-webkit-scrollbar {
-// 	width: 5px;
-// 	background-color: transparent;
+//     width: 20px;
+//     background-color: transparent;
 // }
 
 // &::-webkit-scrollbar-thumb {
-// 	background-color: #6C6C6C;
-// 	border-radius: 25px;
+//     border: 7px solid transparent;
+//     background-clip: padding-box;
+//     border-radius: 9999px;
+//     background-color: #e9e9ec;
 // }
 
 // &::-webkit-scrollbar-track {
-// 	margin: 5px;
+//     margin: 5px;
+//     background: 0 0;
 // }
 
 ul {
