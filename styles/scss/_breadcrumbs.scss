@@ -1,0 +1,56 @@
+.breadcrumbs {
+	margin-bottom: 16px;
+	overflow: hidden;
+
+	ul,
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		overflow: auto;
+
+		li,
+		&-item {
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 4px;
+
+			&:last-child {
+				a,
+				.breadcrumbs__list-link {
+					color: #999c9c;
+					pointer-events: none;
+				}
+			}
+
+			&:not(:last-child) {
+				&::after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					right: 0;
+					transform: translateY(-50%);
+					width: 20px;
+					height: 20px;
+					background-image: url('../../assets/images/icons/arrow-right.svg');
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+			}
+		}
+
+		a,
+		&-link {
+			padding-right: 20px;
+			color: #000706;
+			white-space: nowrap;
+			transition: color 0.23s ease-in-out;
+			cursor: pointer;
+
+			&:hover {
+				color: #0a514c;
+			}
+		}
+	}
+}

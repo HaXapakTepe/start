@@ -1,39 +1,35 @@
 @font-face {
-  font-family: "Lato";
-  font-weight: 400;
-  font-style: normal;
-  src:
-    url("../../assets/fonts/Lato-Regular.woff2") format("woff2"),
-    url("../../assets/fonts/Lato-Regular.woff") format("woff");
-  font-display: swap;
+	font-family: 'Lato';
+	font-weight: 400;
+	font-style: normal;
+	src: url('../../assets/fonts/Lato-Regular.woff2') format('woff2'),
+		url('../../assets/fonts/Lato-Regular.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "Roboto Condensed";
-  font-weight: 500;
-  font-style: normal;
-  src:
-    url("../../assets/fonts/RobotoCondensed-Medium.woff2") format("woff2"),
-    url("../../assets/fonts/RobotoCondensed-Medium.woff") format("woff");
-  font-display: swap;
+	font-family: 'Roboto Condensed';
+	font-weight: 500;
+	font-style: normal;
+	src: url('../../assets/fonts/RobotoCondensed-Medium.woff2') format('woff2'),
+		url('../../assets/fonts/RobotoCondensed-Medium.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "Lato";
-  font-weight: 700;
-  font-style: normal;
-  src:
-    url("../../assets/fonts/Lato-Bold.woff2") format("woff2"),
-    url("../../assets/fonts/Lato-Bold.woff") format("woff");
-  font-display: swap;
+	font-family: 'Lato';
+	font-weight: 700;
+	font-style: normal;
+	src: url('../../assets/fonts/Lato-Bold.woff2') format('woff2'),
+		url('../../assets/fonts/Lato-Bold.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "Lato";
-  font-weight: 800;
-  font-style: normal;
-  src:
-    url("../../assets/fonts/Lato-Heavy.woff2") format("woff2"),
-    url("../../assets/fonts/Lato-Heavy.woff") format("woff");
-  font-display: swap;
+	font-family: 'Lato';
+	font-weight: 800;
+	font-style: normal;
+	src: url('../../assets/fonts/Lato-Heavy.woff2') format('woff2'),
+		url('../../assets/fonts/Lato-Heavy.woff') format('woff');
+	font-display: swap;
 }
