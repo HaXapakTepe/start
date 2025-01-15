@@ -33,50 +33,76 @@ document.addEventListener('DOMContentLoaded', () => {
 	//   })
 	// }
 
+    // объединить блоки в секции от h2 до h2
+    const wysiwygContainer = document.querySelector('.content-block.wysiwyg-container');
+    const allContent = wysiwygContainer.childNodes;
+    const contentBlocks = [];
+    let currentBlock = [];
+    if(wysiwygContainer) {
+        allContent.forEach(node => {
+            if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'H2') {
+                if (currentBlock.length > 0) {
+                    const section = document.createElement('section');
+                    currentBlock.forEach(innerNode => section.appendChild(innerNode.cloneNode(true)));
+                    contentBlocks.push(section);
+                    currentBlock = [];
+                }
+            }
+            currentBlock.push(node.cloneNode(true)); 
+        });
+        if (currentBlock.length > 0) {
+            const section = document.createElement('section');
+            currentBlock.forEach(innerNode => section.appendChild(innerNode.cloneNode(true)));
+            contentBlocks.push(section);
+        }
+        wysiwygContainer.innerHTML = '';
+        contentBlocks.forEach(section => wysiwygContainer.appendChild(section));
+    }
+
 	// показать элементы
-	const affiliate = document.querySelector('.affiliate')
-	if (affiliate) {
-		const contentCard = affiliate.querySelectorAll(
-			'.affiliate__cards table > tbody > tr:not(tr table tr), ' +
-				'.affiliate__cards--alt table > tbody > tr:not(tr table tr)'
-		)
+	const offersTile = document.querySelectorAll('section.offersTile')
 
-		let isAllVisible = true
+	if (offersTile) {
+		offersTile.forEach(elem => {
+			const offersTileItem = elem.querySelectorAll('.offersTile__item')
+			const showMoreButton = elem.querySelector('.btn--showMore')
 
-		function toggleCards() {
-			if (isAllVisible) {
-				contentCard.forEach((card, index) => {
-					if (index >= 5) {
-						card.style.display = 'none'
-					} else if (index <= 4) {
-						card.style.display = 'grid'
+			let currentIndex = 0
+			const cardsToShow = 6
+			let showingAll = false
+
+			function showNextCards() {
+				for (let i = currentIndex; i < currentIndex + cardsToShow; i++) {
+					if (offersTileItem[i]) {
+						offersTileItem[i].classList.add('offersTile__item--visible')
+					}
+				}
+				currentIndex += cardsToShow
+			}
+			showNextCards()
+
+			showMoreButton?.addEventListener('click', function () {
+				showNextCards()
+				showingAll = !showingAll
+
+				offersTileItem.forEach((item, index) => {
+					if (showingAll || index < 6) {
+						item.style.display = 'block'
+					} else {
+						item.style.display = 'none'
 					}
 				})
-			} else {
-				contentCard.forEach((card, index) => {
-					card.style.display = 'grid'
-				})
-			}
-			isAllVisible = !isAllVisible
-		}
 
-		toggleCards()
-
-		affiliate.addEventListener('click', function (e) {
-			const showMoreButton = e.target.closest('.showMore')
-			if (showMoreButton) {
-				toggleCards()
-			}
+				if (showingAll == false) {
+					setTimeout(() => {
+						showMoreButton.scrollIntoView({ block: 'center' })
+					}, 100)
+				}
+			})
 		})
 	}
 
-	function handleTabClick(
-		tabs,
-		pages,
-		activeTabClass,
-		activePageClass,
-		opacityPageClass
-	) {
+	function handleTabClick(tabs, pages, activeTabClass, activePageClass, opacityPageClass) {
 		tabs.forEach((tab, idx) => {
 			tab.addEventListener('click', () => {
 				tabs.forEach(tab => tab.classList.remove(activeTabClass))
@@ -98,41 +124,50 @@ document.addEventListener('DOMContentLoaded', () => {
 	const tabs = document.querySelectorAll('.tab__target')
 	const pages = document.querySelectorAll('.tab__info')
 
-	handleTabClick(
-		tabs,
-		pages,
-		'tab__target--active',
-		'tab__info--active',
-		'tab__info--opacity'
-	)
+	handleTabClick(tabs, pages, 'tab__target--active', 'tab__info--active', 'tab__info--opacity')
 
 	const accordion = document.querySelectorAll('.accordion')
-
-	const handleAccordionClick = acc => {
-		const content = acc.querySelector('.accordion__content')
-		if (acc.classList.contains('accordion--active')) {
-			acc.classList.remove('accordion--active')
-			content.style.maxHeight = '0'
-		} else {
-			acc.classList.add('accordion--active')
-			content.style.maxHeight = content.scrollHeight + 'px'
+    if (accordion) {
+		const handleAccordionClick = acc => {
+			const content = acc.querySelector('.accordion__content')
+			const isActive = acc.classList.toggle('accordion--active')
+			content.style.maxHeight = isActive ? content.scrollHeight + 'px' : '0'
 		}
-	}
 
-	if (accordion) {
 		accordion.forEach(acc => {
 			acc.addEventListener('click', e => {
-				if (e.target.classList.contains('accordion__content') || e.target.closest('.accordion__content')) {
-					return
-				}
-
-				const isMobile = window.innerWidth < 992 && acc.classList.contains('accordion--mobile')
-				if (isMobile || !acc.classList.contains('accordion--mobile')) {
+				if (!e.target.classList.contains('accordion__content') && !e.target.closest('.accordion__content')) {
 					handleAccordionClick(acc)
 				}
 			})
 		})
 	}
+
+	// const handleAccordionClick = acc => {
+	// 	const content = acc.querySelector('.accordion__content')
+	// 	if (acc.classList.contains('accordion--active')) {
+	// 		acc.classList.remove('accordion--active')
+	// 		content.style.maxHeight = '0'
+	// 	} else {
+	// 		acc.classList.add('accordion--active')
+	// 		content.style.maxHeight = content.scrollHeight + 'px'
+	// 	}
+	// }
+
+	// if (accordion) {
+	// 	accordion.forEach(acc => {
+	// 		acc.addEventListener('click', e => {
+	// 			if (e.target.classList.contains('accordion__content') || e.target.closest('.accordion__content')) {
+	// 				return
+	// 			}
+
+	// 			const isMobile = window.innerWidth < 992 && acc.classList.contains('accordion--mobile')
+	// 			if (isMobile || !acc.classList.contains('accordion--mobile')) {
+	// 				handleAccordionClick(acc)
+	// 			}
+	// 		})
+	// 	})
+	// }
 
 	// accordion?.forEach(acc => {
 	// 	acc.addEventListener('click', e => {
@@ -295,10 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const targetElement = document.getElementById(targetId) // Находим элемент по id
 
 		if (targetElement) {
-			const elementPosition =
-				targetElement.getBoundingClientRect().top +
-				window.pageYOffset -
-				headerOffset // Рассчитываем позицию для прокрутки
+			const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset // Рассчитываем позицию для прокрутки
 			window.scrollTo({
 				top: elementPosition,
 				behavior: 'smooth', // Плавная прокрутка
