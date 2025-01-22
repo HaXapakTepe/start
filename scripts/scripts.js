@@ -33,31 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
 	//   })
 	// }
 
-    // объединить блоки в секции от h2 до h2
-    const wysiwygContainer = document.querySelector('.content-block.wysiwyg-container');
-    const allContent = wysiwygContainer.childNodes;
-    const contentBlocks = [];
-    let currentBlock = [];
-    if(wysiwygContainer) {
-        allContent.forEach(node => {
-            if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'H2') {
-                if (currentBlock.length > 0) {
-                    const section = document.createElement('section');
-                    currentBlock.forEach(innerNode => section.appendChild(innerNode.cloneNode(true)));
-                    contentBlocks.push(section);
-                    currentBlock = [];
-                }
-            }
-            currentBlock.push(node.cloneNode(true)); 
-        });
-        if (currentBlock.length > 0) {
-            const section = document.createElement('section');
-            currentBlock.forEach(innerNode => section.appendChild(innerNode.cloneNode(true)));
-            contentBlocks.push(section);
-        }
-        wysiwygContainer.innerHTML = '';
-        contentBlocks.forEach(section => wysiwygContainer.appendChild(section));
-    }
+	// объединить блоки в секции от h2 до h2
+	const wysiwygContainer = document.querySelector('.content-block.wysiwyg-container')
+	const allContent = wysiwygContainer.childNodes
+	const contentBlocks = []
+	let currentBlock = []
+	if (wysiwygContainer) {
+		allContent.forEach(node => {
+			if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'H2') {
+				if (currentBlock.length > 0) {
+					const section = document.createElement('section')
+					currentBlock.forEach(innerNode => section.appendChild(innerNode.cloneNode(true)))
+					contentBlocks.push(section)
+					currentBlock = []
+				}
+			}
+			currentBlock.push(node.cloneNode(true))
+		})
+		if (currentBlock.length > 0) {
+			const section = document.createElement('section')
+			currentBlock.forEach(innerNode => section.appendChild(innerNode.cloneNode(true)))
+			contentBlocks.push(section)
+		}
+		wysiwygContainer.innerHTML = ''
+		contentBlocks.forEach(section => wysiwygContainer.appendChild(section))
+	}
 
 	// показать элементы
 	const offersTile = document.querySelectorAll('section.offersTile')
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	handleTabClick(tabs, pages, 'tab__target--active', 'tab__info--active', 'tab__info--opacity')
 
 	const accordion = document.querySelectorAll('.accordion')
-    if (accordion) {
+	if (accordion) {
 		const handleAccordionClick = acc => {
 			const content = acc.querySelector('.accordion__content')
 			const isActive = acc.classList.toggle('accordion--active')
@@ -435,6 +435,65 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 		},
 	// 	})
 	// }
+
+	// загрузка скриптов при первом взаимодействии
+	// let isLoaded = false
+	// function loadCSS(url) {
+	// 	var link = document.createElement('link')
+	// 	link.rel = 'stylesheet'
+	// 	link.href = url
+	// 	document.head.appendChild(link)
+	// }
+
+	// function loadJS(url, callback) {
+	// 	var script = document.createElement('script')
+	// 	script.src = url
+	// 	script.defer = true
+	// 	script.onload = callback
+	// 	script.onerror = function () {
+	// 		console.error(`Failed to load script: ${url}`)
+	// 	}
+	// 	document.body.appendChild(script)
+	// }
+
+	// loadCSS('https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css')
+	// loadCSS('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css')
+
+	// function handleFirstInteraction() {
+	// 	if (isLoaded) return
+	// 	isLoaded = true
+
+	// 	loadJS('https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', function () {
+	// 		if (typeof Fancybox !== 'undefined') {
+	// 			Fancybox.bind('[data-fancybox]', {
+	// 				Hash: false,
+	// 			})
+	// 		}
+	// 	})
+
+	// 	loadJS('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', function () {
+	// 		if (typeof Swiper !== 'undefined') {
+	// 			if (document.querySelector('.brand__swiper')) {
+	// 				new Swiper('.brand__swiper', {
+	// 					slidesPerView: 1,
+	// 					spaceBetween: 10,
+	// 					navigation: {
+	// 						nextEl: `.brand__arrow-next`,
+	// 						prevEl: `.brand__arrow-prev`,
+	// 					},
+	// 				})
+	// 			}
+	// 		}
+	// 	})
+
+	// 	document.removeEventListener('click', handleFirstInteraction)
+	// 	document.removeEventListener('scroll', handleFirstInteraction)
+	// 	document.removeEventListener('keydown', handleFirstInteraction)
+	// }
+
+	// document.addEventListener('click', handleFirstInteraction)
+	// document.addEventListener('scroll', handleFirstInteraction)
+	// document.addEventListener('keydown', handleFirstInteraction)
 })
 // $(document).ready(function () {})
 // $('.catalog__sorting').select2({
