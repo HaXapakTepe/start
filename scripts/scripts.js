@@ -486,14 +486,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 		}
 	// 	})
 
-	// 	document.removeEventListener('click', handleFirstInteraction)
-	// 	document.removeEventListener('scroll', handleFirstInteraction)
-	// 	document.removeEventListener('keydown', handleFirstInteraction)
+	// document.removeEventListener('click', handleFirstInteraction)
+	// document.removeEventListener('scroll', handleFirstInteraction)
+	// document.removeEventListener('keydown', handleFirstInteraction)
+	// document.removeEventListener('touchstart', handleFirstInteraction)
+	// document.removeEventListener('mousemove', handleFirstInteraction)
 	// }
 
 	// document.addEventListener('click', handleFirstInteraction)
 	// document.addEventListener('scroll', handleFirstInteraction)
 	// document.addEventListener('keydown', handleFirstInteraction)
+	// document.addEventListener('touchstart', handleFirstInteraction)
+	// document.addEventListener('mousemove', handleFirstInteraction)
 })
 // $(document).ready(function () {})
 // $('.catalog__sorting').select2({
