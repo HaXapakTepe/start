@@ -59,44 +59,45 @@ document.addEventListener('DOMContentLoaded', () => {
 		contentBlocks.forEach(section => wysiwygContainer.appendChild(section))
 	}
 
-	// показать элементы
-	const offersTile = document.querySelectorAll('section.offersTile')
+	// показать следующие 10 элементов
+	const aff = document.querySelectorAll('.aff')
 
-	if (offersTile) {
-		offersTile.forEach(elem => {
-			const offersTileItem = elem.querySelectorAll('.offersTile__item')
+	if (aff) {
+		aff.forEach(elem => {
+			const affRow = elem.querySelectorAll('.aff__body-row')
 			const showMoreButton = elem.querySelector('.btn--showMore')
 
 			let currentIndex = 0
-			const cardsToShow = 6
-			let showingAll = false
+			const cardsToShow = 10
 
 			function showNextCards() {
-				for (let i = currentIndex; i < currentIndex + cardsToShow; i++) {
-					if (offersTileItem[i]) {
-						offersTileItem[i].classList.add('offersTile__item--visible')
+				affRow.forEach((row, i) => {
+					if (i >= currentIndex && i < currentIndex + cardsToShow) {
+						if (innerWidth > 1280) {
+							row.style.display = 'grid'
+
+							if (elem.parentNode.classList.contains('swiper-slide')) {
+								row.style.display = 'flex'
+							}
+						} else {
+							row.style.display = 'flex'
+						}
 					}
-				}
+				})
 				currentIndex += cardsToShow
 			}
+
+			affRow.forEach(row => {
+				row.style.display = 'none'
+			})
+
 			showNextCards()
 
 			showMoreButton?.addEventListener('click', function () {
 				showNextCards()
-				showingAll = !showingAll
 
-				offersTileItem.forEach((item, index) => {
-					if (showingAll || index < 6) {
-						item.style.display = 'block'
-					} else {
-						item.style.display = 'none'
-					}
-				})
-
-				if (showingAll == false) {
-					setTimeout(() => {
-						showMoreButton.scrollIntoView({ block: 'center' })
-					}, 100)
+				if (currentIndex >= affRow.length) {
+					showMoreButton.style.display = 'none'
 				}
 			})
 		})
@@ -126,156 +127,135 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	handleTabClick(tabs, pages, 'tab__target--active', 'tab__info--active', 'tab__info--opacity')
 
-	const accordion = document.querySelectorAll('.accordion')
-	if (accordion) {
-		const handleAccordionClick = acc => {
-			const content = acc.querySelector('.accordion__content')
-			const isActive = acc.classList.toggle('accordion--active')
-			content.style.maxHeight = isActive ? content.scrollHeight + 'px' : '0'
-		}
+	// accordion
+	function handleAccordion(accordionElements, activeClass, contentClass) {
+		accordionElements.forEach(acc => {
+			if (acc.classList.contains(activeClass)) {
+				const content = acc.querySelector(contentClass)
+				if (content) {
+					content.style.maxHeight = content.scrollHeight + 'px'
+				}
+			}
+		})
 
-		accordion.forEach(acc => {
-			acc.addEventListener('click', e => {
-				if (!e.target.classList.contains('accordion__content') && !e.target.closest('.accordion__content')) {
-					handleAccordionClick(acc)
+		accordionElements.forEach(acc => {
+			acc.addEventListener('click', function (e) {
+				if (e.target.closest(contentClass)) {
+					return
+				}
+
+				const content = this.querySelector(contentClass)
+				if (!content) return
+
+				if (!this.classList.contains(activeClass)) {
+					this.classList.add(activeClass)
+					content.style.maxHeight = content.scrollHeight + 'px'
+				} else {
+					this.classList.remove(activeClass)
+					content.style.maxHeight = '0'
 				}
 			})
 		})
 	}
 
-	// const handleAccordionClick = acc => {
-	// 	const content = acc.querySelector('.accordion__content')
-	// 	if (acc.classList.contains('accordion--active')) {
-	// 		acc.classList.remove('accordion--active')
-	// 		content.style.maxHeight = '0'
-	// 	} else {
-	// 		acc.classList.add('accordion--active')
-	// 		content.style.maxHeight = content.scrollHeight + 'px'
-	// 	}
-	// }
+	if (accordion) {
+		handleAccordion(accordion, 'accordion--active', '.accordion__content')
+	}
 
-	// if (accordion) {
-	// 	accordion.forEach(acc => {
-	// 		acc.addEventListener('click', e => {
-	// 			if (e.target.classList.contains('accordion__content') || e.target.closest('.accordion__content')) {
-	// 				return
-	// 			}
+	// accordionIndex
+	function initAccordion() {
+		const accordionIndexes = document.querySelectorAll('.accordionIndex')
+		const accordionIndexContents = document.querySelectorAll('.accordionIndex-content')
 
-	// 			const isMobile = window.innerWidth < 992 && acc.classList.contains('accordion--mobile')
-	// 			if (isMobile || !acc.classList.contains('accordion--mobile')) {
-	// 				handleAccordionClick(acc)
-	// 			}
-	// 		})
-	// 	})
-	// }
+		accordionIndexes.forEach((accordion, index) => {
+			const content = accordionIndexContents[index]
 
-	// accordion?.forEach(acc => {
-	// 	acc.addEventListener('click', e => {
-	// 		e.preventDefault()
-	// 		// const content = acc.querySelector('.accordion__content')
-	// 		const content = acc.nextElementSibling
-	// 		if (acc.classList.contains('accordion--active')) {
-	// 			acc.classList.remove('accordion--active')
-	// 			content.style.maxHeight = '0'
-	// 		} else {
-	// 			acc.classList.add('accordion--active')
-	// 			content.style.maxHeight = content.scrollHeight + 'px'
-	// 		}
-	// 	})
-	// })
+			if (accordion.classList.contains('accordionIndex--active')) {
+				content.style.maxHeight = content.scrollHeight + 'px'
+			} else {
+				content.style.maxHeight = '0'
+			}
 
-	// const accordion = document.querySelectorAll('.accordion')
+			accordion.addEventListener('click', e => {
+				e.preventDefault()
+				accordion.classList.toggle('accordionIndex--active')
+				if (accordion.classList.contains('accordionIndex--active')) {
+					content.style.maxHeight = content.scrollHeight + 'px'
+				} else {
+					content.style.maxHeight = '0'
+				}
+			})
+		})
+	}
+	initAccordion()
 
-	// if (accordion) {
-	// 	accordion.forEach(acc => {
-	// 		acc.addEventListener('click', () => {
-	// 			const content = acc.querySelector('.accordion__content')
+	// accordion nextElementSibling
+	function handleNextAccordion(accordionElements, activeClass) {
+		accordionElements.forEach(acc => {
+			if (acc.classList.contains('accordionNext--active')) {
+				const content = acc.nextElementSibling
 
-	// 			if (acc.classList.contains('accordion--active')) {
-	// 				acc.classList.remove('accordion--active')
-	// 				content.style.maxHeight = '0'
-	// 			} else {
-	// 				acc.classList.add('accordion--active')
-	// 				content.style.maxHeight = `${content.scrollHeight}px`
-	// 			}
-	// 		})
-	// 	})
+				if (content) {
+					acc.classList.add(activeClass)
+					content.style.maxHeight = content.scrollHeight + 'px'
+				}
+			}
 
-	// 	document.addEventListener('click', e => {
-	// 		const isAccordionClicked = e.target.closest('.accordion')
+			acc.addEventListener('click', function () {
+				const content = this.nextElementSibling
+				if (!content) return
 
-	// 		if (!isAccordionClicked) {
-	// 			accordion.forEach(acc => {
-	// 				const content = acc.querySelector('.accordion__content')
-	// 				acc.classList.remove('accordion--active')
-	// 				content.style.maxHeight = '0'
-	// 			})
-	// 		}
-	// 	})
-	// }
+				if (!this.classList.contains(activeClass)) {
+					this.classList.add(activeClass)
+					content.style.maxHeight = content.scrollHeight + 'px'
+				} else {
+					this.classList.remove(activeClass)
+					content.style.maxHeight = '0'
+				}
+			})
+		})
+	}
+	if (accordionNext) {
+		handleNextAccordion(accordionNext, 'accordionNext--active')
+	}
 
-	// accordion?.forEach(acc => {
-	// 	acc.addEventListener('click', function (e) {
-	// 		const content = this.querySelector('.accordion__content')
-	// 		if (!this.classList.contains('accordion--active')) {
-	// 			accordion.forEach(otherAcc => {
-	// 				if (otherAcc !== this) {
-	// 					const otherContent = otherAcc.querySelector('.accordion__content')
-	// 					otherAcc.classList.remove('accordion--active')
-	// 					otherContent.style.maxHeight = '0'
-	// 				}
-	// 			})
-	// 			this.classList.add('accordion--active')
-	// 			content.style.maxHeight = content.scrollHeight + 'px'
-	// 		} else {
-	// 			this.classList.remove('accordion--active')
-	// 			content.style.maxHeight = '0'
-	// 		}
-	// 	})
-	// })
+	// previousElementSibling
+	function handlePrevAccordion(accordionElements, activeClass) {
+		accordionElements.forEach(acc => {
+			if (acc.classList.contains('accordionPrev--active')) {
+				const content = acc.previousElementSibling
+				if (content) {
+					acc.classList.add(activeClass)
+					content.style.maxHeight = content.scrollHeight + 'px'
+				}
+			}
 
-	// accordionAlt?.forEach(acc => {
-	// 	acc.addEventListener('click', function (e) {
-	// 		const content = this.querySelector('.accordionAlt__content')
-	// 		if (!e.target.closest('.accordionAlt__content')) {
-	// 			if (!this.classList.contains('accordionAlt--active')) {
-	// 				accordionAlt.forEach(otherAcc => {
-	// 					if (otherAcc !== this) {
-	// 						const otherContent = otherAcc.querySelector(
-	// 							'.accordionAlt__content'
-	// 						)
-	// 						otherAcc.classList.remove('accordionAlt--active')
-	// 						otherContent.style.maxHeight = '0'
-	// 					}
-	// 				})
-	// 				this.classList.add('accordionAlt--active')
-	// 				content.style.maxHeight = content.scrollHeight + 'px'
-	// 			} else {
-	// 				this.classList.remove('accordionAlt--active')
-	// 				content.style.maxHeight = '0'
-	// 			}
-	// 		}
-	// 	})
-	// })
+			acc.addEventListener('click', function () {
+				const content = this.previousElementSibling
+				if (!content) return
 
-	// const accordions = document.querySelectorAll('.accordion')
-	// const contents = document.querySelectorAll('.accordion-content')
+				const textElement = this.querySelector('[data-firstWord]')
+				if (textElement) {
+					const firstWord = textElement.getAttribute('data-firstWord') || textElement.textContent
+					const lastWord = textElement.getAttribute('data-lastWord') || textElement.textContent
 
-	// accordions?.forEach((acc, index) => {
-	//   acc.addEventListener('click', (e) => {
-	//     e.preventDefault()
+					const currentText = textElement.textContent.trim()
+					textElement.textContent = currentText === firstWord.trim() ? lastWord : firstWord
+				}
 
-	//     const content = contents[index]
-
-	//     if (acc.classList.contains('accordion--active')) {
-	//       acc.classList.remove('accordion--active')
-	//       content.style.maxHeight = '0'
-	//     } else {
-	//       acc.classList.add('accordion--active')
-	//       content.style.maxHeight = content.scrollHeight + 'px'
-	//     }
-	//   })
-	// })
+				if (!this.classList.contains(activeClass)) {
+					this.classList.add(activeClass)
+					content.style.maxHeight = content.scrollHeight + 'px'
+				} else {
+					this.classList.remove(activeClass)
+					content.style.maxHeight = '0'
+				}
+			})
+		})
+	}
+	if (accordionPrev) {
+		handlePrevAccordion(accordionPrev, 'accordionPrev--active')
+	}
 
 	const count = document.querySelectorAll('.count')
 
@@ -344,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		const link = event.target.closest('a[href^="#"]')
 		if (link) {
 			smoothScroll.call(link, event) // Вызываем функцию smoothScroll с контекстом ссылки
-			console.log(link)
 		}
 	})
 

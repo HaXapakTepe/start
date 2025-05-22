@@ -126,16 +126,16 @@
 				</label>
 
 				<!-- <div class="catalog__sort-select">
-        <select class="catalog__sorting" name="sorting">
-          <option data-attr="cheap" value="Сначала недорогие">Сначала недорогие</option>
-          <option data-attr="expensive" value="Сначала дорогие">Сначала дорогие</option>
-        </select>
-      </div> -->
+                    <select class="catalog__sorting" name="sorting">
+                    <option data-attr="cheap" value="Сначала недорогие">Сначала недорогие</option>
+                    <option data-attr="expensive" value="Сначала дорогие">Сначала дорогие</option>
+                    </select>
+                </div> -->
 
 				<!-- <div class="certificate__arrow arrow">
-				<div class="certificate__arrow-prev arrow__prev swiper-button-prev"></div>
-				<div class="certificate__arrow-next arrow__next swiper-button-next"></div>
-			</div> -->
+                    <div class="certificate__arrow-prev arrow__prev swiper-button-prev"></div>
+                    <div class="certificate__arrow-next arrow__next swiper-button-next"></div>
+                </div> -->
 
 				<!-- <div class="slider__arrow arrow arrow--slider">
 				<div class="slider__arrow-prev slider__arrow-prev--1 arrow__prev swiper-button-prev"></div>
@@ -146,6 +146,106 @@
 			<footer class="footer">
 				<div class="container"></div>
 			</footer>
+
+			<style>
+				.cookie-consent {
+					position: fixed;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					background: #f5f5f5;
+					padding: 20px;
+					box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					z-index: 1000;
+				}
+
+				.cookie-consent__content {
+					max-width: 600px;
+				}
+
+				.cookie-consent__actions {
+					display: flex;
+					gap: 10px;
+				}
+
+				.cookie-consent__button {
+					padding: 10px 20px;
+					border: none;
+					border-radius: 5px;
+					cursor: pointer;
+				}
+
+				#accept-all {
+					background: #4caf50;
+					color: white;
+				}
+
+				#reject-all {
+					background: #f44336;
+					color: white;
+				}
+
+				#configure {
+					background: #e0e0e0;
+					color: #333;
+				}
+			</style>
+			<div id="cookie-consent" class="cookie-consent">
+				<div class="cookie-consent__content">
+					<h3>Мы используем cookie</h3>
+					<p>
+						Мы используем cookie для улучшения работы сайта, анализа трафика и показа рекламы. Вы можете принять все
+						cookie, отклонить их или настроить предпочтения. Подробнее читайте в нашей
+						<a href="/cookie-policy">Политике cookie</a>.
+					</p>
+				</div>
+				<div class="cookie-consent__actions">
+					<button id="accept-all" class="cookie-consent__button">Принять</button>
+					<button id="reject-all" class="cookie-consent__button">Отклонить</button>
+				</div>
+			</div>
+			<script>
+				const cookieConsent = document.getElementById('cookie-consent')
+				const acceptAll = document.getElementById('accept-all')
+				const rejectAll = document.getElementById('reject-all')
+				function getCookie(name) {
+					let matches = document.cookie.match(
+						new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
+					)
+					return matches ? decodeURIComponent(matches[1]) : undefined
+				}
+
+				function setCookie(name, value, days) {
+					let expires = ''
+					if (days) {
+						let date = new Date()
+						date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+						expires = '; expires=' + date.toUTCString()
+					}
+					document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/'
+				}
+
+				function hideConsent() {
+					cookieConsent.style.display = 'none'
+				}
+
+				acceptAll.addEventListener('click', () => {
+					setCookie('cookies_acept', 'all', 30)
+					hideConsent()
+				})
+
+				rejectAll.addEventListener('click', () => {
+					setCookie('cookies_acept', 'none', 30)
+					hideConsent()
+				})
+
+				if (getCookie('cookies_acept')) {
+					cookieConsent.style.display = 'none'
+				}
+			</script>
 		</div>
 
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
